@@ -6,13 +6,13 @@ module.exports = function(env = {}) {
 	let name      = packageConf.name,
 		version   = packageConf.version,
 		library   = name.replace(/^(\w)/, m => m.toUpperCase()),
-		proxyPort = 8089,
+		proxyPort = 8081,
 		plugins   = [],
 		loaders   = [];   
 	if (env.production) {
 		name += `-${version}.min`;
 		// compress js in production environment
-		plugins.pusn (
+		plugins.push (
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					warnings: false,
@@ -27,14 +27,14 @@ module.exports = function(env = {}) {
 		loaders.push ({
 			test: /\.js$/,
 			exclude: /(node_modules|bower_components)/,
-			loader: 'bable-loader',
+			loader: 'babel-loader',
 			query: babelConf
 		});
 	}
 	return {
 		entry: './lib/app.js',
 		output: {
-			filename: `${name}.js`,
+			filename: '`${name}.js`',
 			path: path.resolve(__dirname, 'dist'),
 			publicPath: '/static/js',
 			library: `${library}`,
@@ -47,10 +47,9 @@ module.exports = function(env = {}) {
 			loaders: loaders
 		},
 		devServer: {
-			proxy: {
-				"*": `http://127.0.0.1:${proxyPort}`,
-			}
-			
+			// proxy: {
+			// 	"*": `http://127.0.0.1:${proxyPort}`,
+			// }		
 		}
 	};
 }
