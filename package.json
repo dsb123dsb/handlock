@@ -1,0 +1,29 @@
+{
+  "name": "hand-lock",
+  "version": "1.0.0",
+  "description": "init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --quiet & http-server -p 8089 -c-1",
+    "build": "webpack --env.production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsb123dsb/handlock.git"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "zhouyoonhui\u001b[D\u001b[D\u001b[D\u001b[\u001b[\u001b[C\u001b[C\u001b[C\u001bnghui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dsb123dsb/handlock/issues"
+  },
+  "homepage": "https://github.com/dsb123dsb/handlock#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
