@@ -5,7 +5,7 @@ module.exports = function(env = {}) {
 		  packageConf = JSON.parse(fs.readFileSync('package.json'), 'utf-8');
 	let name      = packageConf.name,
 		version   = packageConf.version,
-		library   = name.replace(/^(\w)/, m => m.toUpperCase()),
+		library   = packageConf.name.replace(/(?:^|-)(\w)/g, (_, m) => m.toUpperCase()),
 		proxyPort = 8081,
 		plugins   = [],
 		loaders   = [];   
@@ -25,16 +25,17 @@ module.exports = function(env = {}) {
 		// use bable
 		let babelConf = JSON.parse(fs.readFileSync('.babelrc'));
 		loaders.push ({
-			test: /\.js$/,
-			exclude: /(node_modules|bower_components)/,
+			// test: /\.js$/,
+			// exclude: /(node_modules|bower_components)/,
 			loader: 'babel-loader',
-			query: babelConf
+			options: babelConf
+			// query: babelConf
 		});
 	}
 	return {
 		entry: './lib/app.js',
 		output: {
-			filename: '`${name}.js`',
+			filename: `${name}.js`,
 			path: path.resolve(__dirname, 'dist'),
 			publicPath: '/static/js',
 			library: `${library}`,
@@ -44,9 +45,16 @@ module.exports = function(env = {}) {
 		plugins: plugins,
 
 		module: {
-			loaders: loaders
+			rules : [{
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: loaders
+			}]
+			
 		},
 		devServer: {
+			// 默认目录来打开文件
+			contentBase: __dirname + "/src",  // New
 			// proxy: {
 			// 	"*": `http://127.0.0.1:${proxyPort}`,
 			// }		
