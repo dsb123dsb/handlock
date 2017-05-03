@@ -3,12 +3,33 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Demo</title>
+	<style type="text/css">
+		#container{
+			position: relative;
+			overflow: hidden;
+			width: 100%;
+			/*padding-top:100% 撑开容器高度使它等于容器宽度*/
+			padding-top: 100%;
+			height: 0px;
+			background: white;
+
+		}
+		#container canvas{
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%, -50%) scale(0.5);
+		}
+	</style>
 </head>
 <body>
 	<h1>Hello</h1>
+	<div id="container">
+		<canvas></canvas>
+	</div>
 	<script type="text/javascript" src="/static/js/hand-lock.js"></script>
 	<script type="text/javascript">
-		console.log('tets done1!');
+		console.log('tets done2!');
 	</script>
 </body>
 </html>
