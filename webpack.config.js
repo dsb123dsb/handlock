@@ -38,6 +38,7 @@ module.exports = function(env = {}) {
 			filename: `${name}.js`,
 			path: path.resolve(__dirname, 'dist'),
 			publicPath: '/static/js',
+			// 对外暴露的构造函数接口，既库的名字
 			library: `${library}`,
 			libraryTarget: 'umd'
 		},

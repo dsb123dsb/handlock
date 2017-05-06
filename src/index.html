@@ -28,6 +28,11 @@
 	<script type="text/javascript" src="/static/js/hand-lock.js"></script>
 	<script type="text/javascript">
 		console.log('tets done2!');
+		var demo = new HandLock.Demo({
+			container: document.querySelector('#container')
+		});
+		demo.render();
+		demo.record();
 	</script>
 </body>
 </html>
