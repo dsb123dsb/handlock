@@ -28,11 +28,23 @@
 	<script type="text/javascript" src="/static/js/hand-lock.js"></script>
 	<script type="text/javascript">
 		console.log('tets done2!');
-		var demo = new HandLock.Demo({
+		var recorder = new HandLock.Demo({
 			container: document.querySelector('#container')
 		});
-		demo.render();
-		demo.record();
+		function recorded(res){
+			if(res.err){
+				console.log(res.err);
+				recorder.clearPath();
+				if(res.err.message != HandLock.Demo.ERR_USER_CANCELD){
+					recorder.record().then(recorded);
+				}
+			}else{
+				console.log('密码： ', res.records);
+				recorder.record().then(recorded);
+			}
+		}
+		recorder.render();
+		recorder.record().then(recorded);
 	</script>
 </body>
 </html>
