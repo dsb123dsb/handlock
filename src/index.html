@@ -86,7 +86,7 @@
 		let locker = new HandLock.Locker({
 			container: document.querySelector('#handlock'),
 			check: {
-				checked: function(){
+				checked: function(res){
 					locker.clearPath();
 					if(res.err){
 						if(res.err.message === HandLock.Locker.ERR_PASSWORD_MISMATCH){
@@ -124,12 +124,15 @@
 							setTimeout(function(){
 								toast.className = 'hide';
 							}, 1000);
+							hint.innerHTML = '设置密码， 请绘制密码图案';	
 						}
 					}else{
 						hint.innerHTML = '密码更新成功';
 						password = res.records;
 						localStorage.setItem('handlock_password', password);
-						checkmode.click();
+						setTimeout(function(){
+							checkmode.click();
+						},1000);
 					}
 				}
 			}
@@ -137,7 +140,6 @@
 		});
 		selectMode.addEventListener('change', function(e){
 			var value = e.target.value;
-			console.log('11');
 			if(value === 'update'){
 				locker.clearPath();
 				hint.innerHTML = '设置密码， 请绘制密码图案';
