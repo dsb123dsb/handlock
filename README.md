@@ -1,7 +1,7 @@
 
 # 引子 #
 原文感觉很多哦坑，自己修改可以凑合出效果
-
+[演示地址（手机查看）](https://pressuregit.github.io/projects-show/handlock/)
 # API #
 ## Locker ##
 创建一个可以设置密码和验证密码的实例
