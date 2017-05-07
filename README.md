@@ -1,8 +1,6 @@
 
-# 安装和使用 #
-直接在浏览器里引用:
-
-    <script src="https://s2.ssl.qhres.com/!9f2db498/HandLock-0.2.1.min.js"></script>
+# 引子 #
+原文感觉很多哦坑，自己修改可以凑合出效果
 
 # API #
 ## Locker ##
@@ -83,13 +81,11 @@
 
 # 修改和发布代码 #
 下载仓库并安装依赖：
-
+	git clone git@github.com:dsb123dsb/handlock.git
     npm install
 
 启动服务：
-
     npm start
+查看
+	localhost:8080 
 
-发布代码：
-
-    npm run deploy
