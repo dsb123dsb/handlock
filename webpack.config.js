@@ -6,7 +6,7 @@ module.exports = function(env = {}) {
 	let name      = packageConf.name,
 		version   = packageConf.version,
 		library   = packageConf.name.replace(/(?:^|-)(\w)/g, (_, m) => m.toUpperCase()),
-		proxyPort = 8081,
+		proxyPort = 8082,
 		plugins   = [],
 		loaders   = [];   
 	if (env.production) {
@@ -55,7 +55,7 @@ module.exports = function(env = {}) {
 		},
 		devServer: {
 			// 默认目录来打开文件
-			contentBase: __dirname + "/src",  // New
+			// contentBase: __dirname + "/src",  // New
 			// proxy: {
 			// 	"*": `http://127.0.0.1:${proxyPort}`,
 			// }		
